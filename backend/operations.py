@@ -5,10 +5,7 @@ from algosdk.v2client import algod
 from algosdk.future import transaction
 import requests as req
 from hashlib import sha256
-
-PROGRAM_WALLET = "ECLEFRP6UN52NJSY6XVXVGANU6KSATTPYQJE6R3UMUOKRBWMTQ4DUCZ6RY"
-PROGRAM_PRIVATE_KEY = "qTUS9bltxHlxWCN+fmLSOqluyL9Nu7uO3tSq5IumOpQglkLF/qN7pqZY9et6mA2nlSBOb8QST0d0ZRyohsycOA=="
-DUMMY_USER_WALLET = "YGWPQACTX7GL34Z7ZLMCTIFD7CP425L25GUOUHVCQ7F6JAWRYWLBKPIOCU"
+from cryptography.fernet import Fernet
 
 
 def generate_algorand_keypair():
@@ -32,9 +29,8 @@ def make_transaction(private_key, my_address, reciever_address, description):
     params.flat_fee = constants.MIN_TXN_FEE 
     params.fee = 1000
     amount = 100000
-    note = description.encode()
 
-    unsigned_txn = transaction.PaymentTxn(my_address, params, reciever_address, amount, None, note)
+    unsigned_txn = transaction.PaymentTxn(my_address, params, reciever_address, amount, None, description)
 
     # sign transaction
     signed_txn = unsigned_txn.sign(private_key)
@@ -50,6 +46,8 @@ def make_transaction(private_key, my_address, reciever_address, description):
         print("Something went wrong with the transaction!\n", err)
         return
 
+    print(confirmed_txn)
+
     print("Transaction information: {}".format(
         json.dumps(confirmed_txn, indent=4)))
 
@@ -63,6 +61,9 @@ def make_transaction(private_key, my_address, reciever_address, description):
 
     account_info = algod_client.account_info(my_address)
     print("Final Account balance: {} microAlgos".format(account_info.get('amount')) + "\n")
+
+    account_info = algod_client.account_info(reciever_address)
+    print("Account balance: {} microAlgos".format(account_info.get('amount')))
 
 def get_transactions_descriptions(user_address):
     base_url = "http://localhost:8980"
@@ -82,21 +83,26 @@ def get_transactions_descriptions(user_address):
 
 def encrypt(_id, user, password, key):
     payload = f'{_id},{user},{password}'
-    encryptionKey = sha256(sha256(key))
-
-    
-
-    return payload
-
-
+    encryptionKey = sha256(key.encode())
+    safe = base64.urlsafe_b64encode(encryptionKey.digest())
+    fernet = Fernet(safe)
+    encMessage = fernet.encrypt(payload.encode())
+    return encMessage
 
 def decrypt(payload, key):
-    hashlib.decode()
+    encryptionKey = sha256(key.encode())
+    safe = base64.urlsafe_b64encode(encryptionKey.digest())
+    fernet = Fernet(safe)
+    decMessage = fernet.decrypt(payload).decode()
+    return decMessage
     
 
 
+# PROGRAM_WALLET = "ECLEFRP6UN52NJSY6XVXVGANU6KSATTPYQJE6R3UMUOKRBWMTQ4DUCZ6RY"
+# PROGRAM_PRIVATE_KEY = "qTUS9bltxHlxWCN+fmLSOqluyL9Nu7uO3tSq5IumOpQglkLF/qN7pqZY9et6mA2nlSBOb8QST0d0ZRyohsycOA=="
+# DUMMY_USER_WALLET = "A7NMWS3NT3IUDMLVO26ULGXGIIOUQ3ND2TXSER6EBGRZNOBOUIQXHIBGDE"
 
-# description = "(user, pass)"
+# description = encrypt(0, "user1", "pass1", "123456789")
+
 # make_transaction(PROGRAM_PRIVATE_KEY, PROGRAM_WALLET, DUMMY_USER_WALLET, description)
 
-# print(get_transactions_descriptions(DUMMY_USER_WALLET))
