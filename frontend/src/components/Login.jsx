@@ -8,8 +8,9 @@ function Login () {
   const [details, setDetails] = useState({email: "", password: ""});
 
   const fetchData = async () => {
-    const response = await fetch("https://reqbin.com/echo/post/json", {
+    return fetch("http://localhost:5000/getData", {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -19,19 +20,21 @@ function Login () {
     "Password": ${details.password},,
     }`,
     });
-    return response
   }
 
   const submitHandler = e => {
     e.preventDefault();
 
     // console.log(details);
+    
+    fetchData().then(data => console.log(data))
 
-    data = fetchData()
-    data.json().then(data => {
-      console.log(data);
+    
+
+    // fetchData.json().then(data => {
+    //   console.log(data);
       
-    });
+    // });
   }
   return (
     <section id="login" className={layout.sectionReverse}>
