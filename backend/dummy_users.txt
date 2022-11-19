@@ -1,11 +1,9 @@
 MASTER USER:
-
-My address: ECLEFRP6UN52NJSY6XVXVGANU6KSATTPYQJE6R3UMUOKRBWMTQ4DUCZ6RY
-My private key: qTUS9bltxHlxWCN+fmLSOqluyL9Nu7uO3tSq5IumOpQglkLF/qN7pqZY9et6mA2nlSBOb8QST0d0ZRyohsycOA==
-My passphrase: release emotion whisper swear match fury seminar cash sound measure hard neck tail velvet hospital robust student kick heavy enjoy blind predict peace above asset
-
+My address: BMJ2K4ACQAZM7Z6CLJSWLC545WIU6NGZDBATIMOZUXSK3KJJ7323JJYT2A
+My private key: G3aUhQI65xSnaiyeqjSwH7bYzLS7rba1/lqR+EleJzcLE6VwAoAyz+fCWmVli7ztkU802RhBNDHZpeStqSn+9Q==
+My passphrase: sell fade drift parent solar share festival cluster fatigue sport submit giggle ramp creek tank pumpkin replace width pulp math negative stuff rice ability gain
 
 DUMMY CLIENT:
-My address: YGWPQACTX7GL34Z7ZLMCTIFD7CP425L25GUOUHVCQ7F6JAWRYWLBKPIOCU
-My private key: jCFoKGVkL28JIa1Sgbwh3AmnR+B9ba8hWuTFlDllhTvBrPgAU7/MvfM/ytgpoKP4n811eumo6h6ih8vkgtHFlg==
-My passphrase: cover party neither edge gain forward analyst pudding clean velvet awkward oven evoke ball upper hope curious hammer vendor era industry flock switch ability evidence
+My address: Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA
+My private key: +fJISDJV/fayCEXTE7lU82vf+EdFC8k1dxvd/NAY6izHcxKFFVcmx683tkB4SgTBC2HdfhFBAXB3fgW+qD3tdQ==
+My passphrase: game cat category farm wide sad easily eagle kidney tone prevent sand salute wreck clay area rice system misery soccer peanut mail guard ability fade

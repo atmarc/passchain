@@ -66,9 +66,12 @@ def make_transaction(private_key, my_address, reciever_address, description):
     print("Account balance: {} microAlgos".format(account_info.get('amount')))
 
 def get_transactions_descriptions(user_address):
-    base_url = "http://localhost:8980"
+    base_url = "http://131.159.14.109:8980"
     url = f"{base_url}/v2/accounts/{user_address}/transactions"
     res = req.get(url)
+
+    
+
     data = json.loads(res.text)
     if res.status_code != 200:
         raise "Coudn't retrieve transactions of the user."
@@ -98,11 +101,22 @@ def decrypt(payload, key):
     
 
 
-# PROGRAM_WALLET = "ECLEFRP6UN52NJSY6XVXVGANU6KSATTPYQJE6R3UMUOKRBWMTQ4DUCZ6RY"
-# PROGRAM_PRIVATE_KEY = "qTUS9bltxHlxWCN+fmLSOqluyL9Nu7uO3tSq5IumOpQglkLF/qN7pqZY9et6mA2nlSBOb8QST0d0ZRyohsycOA=="
-# DUMMY_USER_WALLET = "A7NMWS3NT3IUDMLVO26ULGXGIIOUQ3ND2TXSER6EBGRZNOBOUIQXHIBGDE"
+PROGRAM_WALLET = "BMJ2K4ACQAZM7Z6CLJSWLC545WIU6NGZDBATIMOZUXSK3KJJ7323JJYT2A"
+PROGRAM_PRIVATE_KEY = "G3aUhQI65xSnaiyeqjSwH7bYzLS7rba1/lqR+EleJzcLE6VwAoAyz+fCWmVli7ztkU802RhBNDHZpeStqSn+9Q=="
+DUMMY_USER_WALLET = "Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA"
+DUMMY_MASTER_PASSWORD = "123456789"
 
-# description = encrypt(0, "user1", "pass1", "123456789")
+
+# description = encrypt(1, "user2", "pass2", DUMMY_MASTER_PASSWORD)
 
 # make_transaction(PROGRAM_PRIVATE_KEY, PROGRAM_WALLET, DUMMY_USER_WALLET, description)
 
+# -----------------
+
+# encrypted_transactions = get_transactions_descriptions(DUMMY_USER_WALLET)
+
+# print(encrypted_transactions)
+
+# data = [decrypt(elem.encode(), DUMMY_MASTER_PASSWORD) for elem in encrypted_transactions]
+
+# print(data)
