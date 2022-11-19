@@ -12,13 +12,14 @@ function Login () {
       method: 'POST',
       mode: 'no-cors',
       headers: {
-        'Accept': 'application/json',
+        // 'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: `{
-    "Login": ${details.email},
-    "Password": ${details.password},,
-    }`,
+      body: JSON.stringify({
+        "login": "Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA",
+        "password": "123456789"
+      }),
+      redirect: "follow"
     });
   }
 

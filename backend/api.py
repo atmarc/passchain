@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from operations import get_transactions_descriptions, make_transaction, encrypt, decrypt
+import json
 
 app = Flask(__name__)
 
@@ -49,14 +50,14 @@ def updateData():
 
 @app.route('/getData', methods=['POST'])
 def getData():
-    body = request.get_json()
+    data = json.loads(request.data)
 
-    print(body["login"], body["password"])
-    encrypted_transactions = get_transactions_descriptions(body["login"])
+    print(data["login"], data["password"])
+    encrypted_transactions = get_transactions_descriptions(data["login"])
 
     print(encrypted_transactions)
 
-    data = [decrypt(elem.encode(), body["password"]) for elem in encrypted_transactions]
+    data = [decrypt(elem.encode(), data["password"]) for elem in encrypted_transactions]
 
     return jsonify(data)
     
