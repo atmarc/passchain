@@ -1,0 +1,11 @@
+MASTER USER:
+
+My address: ECLEFRP6UN52NJSY6XVXVGANU6KSATTPYQJE6R3UMUOKRBWMTQ4DUCZ6RY
+My private key: qTUS9bltxHlxWCN+fmLSOqluyL9Nu7uO3tSq5IumOpQglkLF/qN7pqZY9et6mA2nlSBOb8QST0d0ZRyohsycOA==
+My passphrase: release emotion whisper swear match fury seminar cash sound measure hard neck tail velvet hospital robust student kick heavy enjoy blind predict peace above asset
+
+
+DUMMY CLIENT:
+My address: YGWPQACTX7GL34Z7ZLMCTIFD7CP425L25GUOUHVCQ7F6JAWRYWLBKPIOCU
+My private key: jCFoKGVkL28JIa1Sgbwh3AmnR+B9ba8hWuTFlDllhTvBrPgAU7/MvfM/ytgpoKP4n811eumo6h6ih8vkgtHFlg==
+My passphrase: cover party neither edge gain forward analyst pudding clean velvet awkward oven evoke ball upper hope curious hammer vendor era industry flock switch ability evidence
