@@ -5,6 +5,7 @@ import Button from "./Button";
 import React, { useState } from "react";
 
 function Login () {
+
   const [details, setDetails] = useState({email: "", password: ""});
 
   const fetchData = async () => {
@@ -16,8 +17,8 @@ function Login () {
         'Content-Type': 'application/json'
       },
       body: `{
-    "Login": ${details.email},
-    "Password": ${details.password},,
+        "Login": 'Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA',
+        "Password": '123456789',
     }`,
     });
   }
@@ -29,7 +30,26 @@ function Login () {
     
     fetchData().then(data => console.log(data))
 
-    
+    // fetch('http://localhost:5000/getData', {
+    //   method: 'POST',
+    //   mode: 'no-cors',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ 
+    //     "Email": details.email ,
+    //     "Password": details.password },
+    //     )
+    // })
+    //   .then(response => response.json())
+    //   .then(response => console.log(JSON.stringify(response)))
+
+    // fetch("https://ipinfo.io/json")
+    //   .then(function (response) {
+    //     return response.json();
+    //   })
+
 
     // fetchData.json().then(data => {
     //   console.log(data);
@@ -59,6 +79,8 @@ function Login () {
             </div>
           </div>
         </form>
+
+
 
         <button style={{ color: "white" }} onClick={submitHandler}>Sign In</button>
       </div>

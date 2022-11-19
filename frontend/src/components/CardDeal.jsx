@@ -1,6 +1,16 @@
 import { card } from "../assets";
 import styles, { layout } from "../style";
 import Button from "./Button";
+import BasicTable from "./Table";
+
+
+const user_pw = [{"login": 'hi', "password": 'pw'}, {"login": 'wo', "password": 'pw2'}]
+const listItems = user_pw.map((item) =>
+  <li>
+    {item["login"]} 
+    {item["password"]} 
+  </li>
+)
 
 const CardDeal = () => (
   <section className={layout.section}>
@@ -13,13 +23,15 @@ const CardDeal = () => (
         Arcu tortor, purus in mattis at sed integer faucibus. Aliquet quis
         aliquet eget mauris tortor.ç Aliquet ultrices ac, ametau.
       </p>
+      {/* <Button styles={`mt-10`} /> */}
 
-      <Button styles={`mt-10`} />
+      <BasicTable />
+
     </div>
 
-    <div className={layout.sectionImg}>
+    {/* <div className={layout.sectionImg}>
       <img src={card} alt="billing" className="w-[100%] h-[100%]" />
-    </div>
+    </div> */}
   </section>
 );
 
