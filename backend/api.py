@@ -3,10 +3,10 @@ from operations import get_transactions_descriptions, make_transaction, encrypt,
 
 app = Flask(__name__)
 
-PROGRAM_WALLET = "ECLEFRP6UN52NJSY6XVXVGANU6KSATTPYQJE6R3UMUOKRBWMTQ4DUCZ6RY"
-PROGRAM_PRIVATE_KEY = "qTUS9bltxHlxWCN+fmLSOqluyL9Nu7uO3tSq5IumOpQglkLF/qN7pqZY9et6mA2nlSBOb8QST0d0ZRyohsycOA=="
-# DUMMY_USER_WALLET = "YGWPQACTX7GL34Z7ZLMCTIFD7CP425L25GUOUHVCQ7F6JAWRYWLBKPIOCU"
-DUMMY_USER_WALLET = "A7NMWS3NT3IUDMLVO26ULGXGIIOUQ3ND2TXSER6EBGRZNOBOUIQXHIBGDE"
+PROGRAM_WALLET = "BMJ2K4ACQAZM7Z6CLJSWLC545WIU6NGZDBATIMOZUXSK3KJJ7323JJYT2A"
+PROGRAM_PRIVATE_KEY = "G3aUhQI65xSnaiyeqjSwH7bYzLS7rba1/lqR+EleJzcLE6VwAoAyz+fCWmVli7ztkU802RhBNDHZpeStqSn+9Q=="
+DUMMY_USER_WALLET = "Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA"
+DUMMY_MASTER_PASSWORD = "123456789"
 
 @app.route('/createData', methods=['POST'])
 def createData():
@@ -15,9 +15,11 @@ def createData():
     data = get_transactions_descriptions(body["login"])
     _id = len(data)
 
+    print("Creating data - information recieved:", body["login"], body["username"], body["user_password"], body["master_password"])
+
     description = encrypt(_id, body["username"], body["user_password"], body["master_password"])
 
-    make_transaction(PROGRAM_PRIVATE_KEY, PROGRAM_WALLET, DUMMY_USER_WALLET, description)
+    make_transaction(PROGRAM_PRIVATE_KEY, PROGRAM_WALLET, body["login"], description)
 
     return "OK", 200
 
