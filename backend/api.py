@@ -8,7 +8,9 @@ app = Flask(__name__)
 def index():
     # {login: "", password: ""}
 
-    transactions = get_transactions_descriptions()
+    # return get_transactions_descriptions("YGWPQACTX7GL34Z7ZLMCTIFD7CP425L25GUOUHVCQ7F6JAWRYWLBKPIOCU")
+    return "{}"
+
 
 if __name__ == '__main__':
     app.run()
