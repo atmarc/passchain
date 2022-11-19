@@ -17,8 +17,8 @@ function Login () {
         'Content-Type': 'application/json'
       },
       body: `{
-        "Login": 'Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA',
-        "Password": '123456789',
+        "login": 'Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA',
+        "password": '123456789',
     }`,
     });
   }
