@@ -66,16 +66,17 @@ def make_transaction(private_key, my_address, reciever_address, description):
     print("Account balance: {} microAlgos".format(account_info.get('amount')))
 
 def get_transactions_descriptions(user_address):
+    print("get_transactions_descriptions of", user_address)
     base_url = "http://131.159.14.109:8980"
     url = f"{base_url}/v2/accounts/{user_address}/transactions"
     res = req.get(url)
-
-    
 
     data = json.loads(res.text)
     if res.status_code != 200:
         raise "Coudn't retrieve transactions of the user."
     
+    print("Number of transactions:", len(data['transactions']))
+
     descriptions = []
     for transaction in data['transactions']:
         note = transaction['note']
