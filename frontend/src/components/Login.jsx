@@ -9,7 +9,7 @@ import React, { useState } from "react";
 function Login({ setUserData, setUser, user }) {
 
   const fetchData = () => {
-    return fetch("http://localhost:5000/getData", {
+    return fetch("http://localhost:8080/getData", {
       method: 'POST',
       // mode: 'no-cors',
       headers: {
@@ -38,7 +38,7 @@ function Login({ setUserData, setUser, user }) {
 
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
-          Log in <br className="sm:block hidden" /> to your secure key manager
+          Log in <br className="sm:block hidden" /> To Your Secure Key Manager
         </h2>
 
           <div className="grid">
