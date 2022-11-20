@@ -24,6 +24,8 @@ export default function BasicTable({ userData, user }) {
             "user_password": newPassword.current.value,
         }
 
+        console.log(body_data)
+
         fetch("http://localhost:5000/createData", {
             method: 'POST',
             headers: {
