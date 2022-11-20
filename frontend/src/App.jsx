@@ -8,7 +8,7 @@ function App() {
     password: "password"
   }
 
-  const [user, setUser] = useState({email: "", password: ""});
+  const [user, setUser] = useState({login: "", password: ""});
   const [userData, setUserData] = useState([]);
   
   return (
@@ -29,28 +29,12 @@ function App() {
         <div className={`${styles.boxWidth}`}>
           <Stats />
           <Business />
-          <Login setUserData={setUserData} />
-          <CardDeal userData={userData} />
-          <Testimonials />
-          <Clients />
-          <CTA />
+          <Login setUserData={setUserData} setUser={setUser} user={user} />
+          <CardDeal userData={userData} user={user} />
           <Footer />
         </div>
       </div>
 
-      {/* <div className = "App">
-        {(user.email != "") ? (
-          <div className="welcome">
-            <h2>
-              Welcome, <span>{user.name}</span>
-            </h2>
-          </div>
-        ): 
-        (
-          <Login />
-        )
-        }
-      </div> */}
     </div>
   );
 }

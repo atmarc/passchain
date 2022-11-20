@@ -48,8 +48,6 @@ def updateData():
     return "" # overwrite the transaction with this Index with an emtpy one  "answer" # [(user1, pass1), (user2, pass2)]
 
 
-
-
 @app.route('/getData', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def getData():

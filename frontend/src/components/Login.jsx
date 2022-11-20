@@ -1,12 +1,12 @@
 import { apple, bill, google } from "../assets";
 import styles, { layout } from "../style";
 import Button from "./Button";
+import './login.css';
+
 
 import React, { useState } from "react";
 
-function Login ({ setUserData }) {
-
-  const [details, setDetails] = useState({email: "", password: ""});
+function Login({ setUserData, setUser, user }) {
 
   const fetchData = () => {
     return fetch("http://localhost:5000/getData", {
@@ -17,8 +17,8 @@ function Login ({ setUserData }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "login": "Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA",
-        "password": "123456789"
+        "login": user.login,
+        "password": user.password
       }),
       redirect: "follow"
     });
@@ -27,38 +27,11 @@ function Login ({ setUserData }) {
   const submitHandler = e => {
     e.preventDefault();
 
-    // console.log(details);
-    
     fetchData().then(res => res.json()).then(res => {
       setUserData(res["data"])
       console.log(res["data"])
-    } )
-    
-    // fetch('http://localhost:5000/getData', {
-    //   method: 'POST',
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ 
-    //     "Email": details.email ,
-    //     "Password": details.password },
-    //     )
-    // })
-    //   .then(response => response.json())
-    //   .then(response => console.log(JSON.stringify(response)))
+    })
 
-    // fetch("https://ipinfo.io/json")
-    //   .then(function (response) {
-    //     return response.json();
-    //   })
-
-
-    // fetchData.json().then(data => {
-    //   console.log(data);
-      
-    // });
   }
   return (
     <section id="login" className={layout.sectionReverse}>
@@ -67,26 +40,51 @@ function Login ({ setUserData }) {
         <h2 className={styles.heading2}>
           Log in <br className="sm:block hidden" /> to your secure key manager
         </h2>
+{/*         
         <form onSubmit={submitHandler}>
           <div className="form-inner">
             <div className="form-group">
-              <label style={{color: "white"}} htmlFor="email" >
-                Email: 
+              <label style={{ color: "white" }} htmlFor="email" >
+                Address:
               </label>
-              <input type="email" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value})} value={details.email}/>
+              <input type="email" name="email" id="email" onChange={e => setUser({ ...user, login: e.target.value })} value={user.email} />
             </div>
             <div className="form-group">
               <label style={{ color: "white" }} htmlFor="password">
                 Password:
               </label>
-              <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
+              <input type="password" name="password" id="password" onChange={e => setUser({ ...user, password: e.target.value })} value={user.password} />
             </div>
           </div>
-        </form>
+        </form> */}
 
+        {/* ------------------------------------------------------------------------------------------------- */}
+          <div className="grid">
 
+            <form action="https://httpbin.org/post" method="POST" className="form login">
 
-        <button style={{ color: "white" }} onClick={submitHandler}>Sign In</button>
+              <div className="form__field">
+                <span className="hidden">Username</span>
+                <input id="login__username" type="text" name="username" className="form__input" 
+                  placeholder="Username"  onChange={e => setUser({ ...user, login: e.target.value })} value={user.email} required />
+              </div>
+
+              <div className="form__field">
+                <span className="hidden">Password</span>
+                <input id="login__password" type="password" name="password" className="form__input" 
+                onChange={e => setUser({ ...user, password: e.target.value })} value={user.password} placeholder="Password" required />
+              </div>
+
+              <div className="form__field">
+                <input type="submit" value="Sign In" onClick={submitHandler} />
+              </div>
+
+            </form>
+
+          </div>
+
+        {/* ------------------------------------------------------------------------------------------------- */}
+
       </div>
 
     </section>
