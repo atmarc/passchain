@@ -11,10 +11,28 @@ import Button from "./Button";
 import { useRef } from 'react';
 
 
-export default function BasicTable({ userData, user }) {
+export default function BasicTable({ userData, setUserData, user, refreshTable }) {
 
     const newUser = useRef();
     const newPassword = useRef();
+
+    function refreshTable() {
+        fetch("http://localhost:5000/getData", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "login": user.login,
+                "password": user.password
+            }),
+            redirect: "follow"
+        })
+            .then(res => res.json()).then(res => {
+                setUserData(res["data"])
+                console.log(res["data"])
+            })
+    }
 
     function addPassHandler() {
         var body_data = {
@@ -35,7 +53,10 @@ export default function BasicTable({ userData, user }) {
             redirect: "follow"
         })
 
-        .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+                refreshTable();
+            })
 
         newUser.current.value = ""
         newPassword.current.value = ""
@@ -68,12 +89,12 @@ export default function BasicTable({ userData, user }) {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Button styles={`mt-10`} text={"Add data"} onClick={addPassHandler}/>
-            <br/>
-            <input type="username" ref={newUser}/>
-            <br/>
-            <br/>
-            <input type="password" ref={newPassword}/>
+            <Button styles={`mt-10`} text={"Add data"} onClick={addPassHandler} />
+            <br />
+            <input type="username" ref={newUser} />
+            <br />
+            <br />
+            <input type="password" ref={newPassword} />
 
         </div>
     );

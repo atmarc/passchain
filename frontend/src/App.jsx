@@ -30,7 +30,7 @@ function App() {
           <Stats />
           <Business />
           <Login setUserData={setUserData} setUser={setUser} user={user} />
-          <CardDeal userData={userData} user={user} />
+          <CardDeal setUserData={setUserData} userData={userData} user={user} />
           <Footer />
         </div>
       </div>

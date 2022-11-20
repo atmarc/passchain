@@ -9,7 +9,7 @@ import React, { useState } from "react";
 function Login({ setUserData, setUser, user }) {
 
   const fetchData = () => {
-    return fetch("http://localhost:8080/getData", {
+    return fetch("http://localhost:5000/getData", {
       method: 'POST',
       // mode: 'no-cors',
       headers: {
