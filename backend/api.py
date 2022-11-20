@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from operations import get_transactions_descriptions, make_transaction, encrypt, decrypt
 import json
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 PROGRAM_WALLET = "BMJ2K4ACQAZM7Z6CLJSWLC545WIU6NGZDBATIMOZUXSK3KJJ7323JJYT2A"
 PROGRAM_PRIVATE_KEY = "G3aUhQI65xSnaiyeqjSwH7bYzLS7rba1/lqR+EleJzcLE6VwAoAyz+fCWmVli7ztkU802RhBNDHZpeStqSn+9Q=="
@@ -11,7 +13,7 @@ DUMMY_MASTER_PASSWORD = "123456789"
 
 @app.route('/createData', methods=['POST'])
 def createData():
-    body = request.get_json()
+    body = json.loads(request.data)
     
     data = get_transactions_descriptions(body["login"])
     _id = len(data)
@@ -49,6 +51,7 @@ def updateData():
 
 
 @app.route('/getData', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def getData():
     data = json.loads(request.data)
 
@@ -59,8 +62,15 @@ def getData():
 
     data = [decrypt(elem.encode(), data["password"]) for elem in encrypted_transactions]
 
-    return jsonify(data)
-    
+    return_data = []
+
+    for elem in data:
+        _id, user, password = elem.split(',')
+        return_data.append({"username": user, "password": password})
+
+    print("Return values:", return_data)
+    res = jsonify({"data": data})
+    return res    
 
 if __name__ == "__main__":
     app.run()

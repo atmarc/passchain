@@ -8,13 +8,13 @@ function Login () {
 
   const [details, setDetails] = useState({email: "", password: ""});
 
-  const fetchData = async () => {
+  const fetchData = () => {
     return fetch("http://localhost:5000/getData", {
       method: 'POST',
-      mode: 'no-cors',
+      // mode: 'no-cors',
       headers: {
-        // 'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'AcceptAccess-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         "login": "Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA",
@@ -29,8 +29,8 @@ function Login () {
 
     // console.log(details);
     
-    fetchData().then(data => console.log(data))
-
+    fetchData().then(res => res.json()).then(res => console.log(res))
+    
     // fetch('http://localhost:5000/getData', {
     //   method: 'POST',
     //   mode: 'no-cors',
