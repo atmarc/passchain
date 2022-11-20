@@ -15,6 +15,8 @@ def generate_algorand_keypair():
     print("My passphrase: {}".format(mnemonic.from_private_key(private_key)))
 
 def make_transaction(private_key, my_address, reciever_address, description):
+    print("MAKING TRANSACTION:",private_key, my_address, reciever_address, description)
+
     algod_address = "http://localhost:4001"
     algod_token = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     algod_client = algod.AlgodClient(algod_token, algod_address)
@@ -108,7 +110,7 @@ DUMMY_USER_WALLET = "Y5ZRFBIVK4TMPLZXWZAHQSQEYEFWDXL6CFAQC4DXPYC35KB55V263DHFAA"
 DUMMY_MASTER_PASSWORD = "123456789"
 
 
-# description = encrypt(1, "user2", "pass2", DUMMY_MASTER_PASSWORD)
+# description = encrypt(1, "user3", "pass3", DUMMY_MASTER_PASSWORD)
 
 # make_transaction(PROGRAM_PRIVATE_KEY, PROGRAM_WALLET, DUMMY_USER_WALLET, description)
 

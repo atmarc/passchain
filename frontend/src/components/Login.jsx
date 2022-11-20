@@ -40,29 +40,9 @@ function Login({ setUserData, setUser, user }) {
         <h2 className={styles.heading2}>
           Log in <br className="sm:block hidden" /> to your secure key manager
         </h2>
-{/*         
-        <form onSubmit={submitHandler}>
-          <div className="form-inner">
-            <div className="form-group">
-              <label style={{ color: "white" }} htmlFor="email" >
-                Address:
-              </label>
-              <input type="email" name="email" id="email" onChange={e => setUser({ ...user, login: e.target.value })} value={user.email} />
-            </div>
-            <div className="form-group">
-              <label style={{ color: "white" }} htmlFor="password">
-                Password:
-              </label>
-              <input type="password" name="password" id="password" onChange={e => setUser({ ...user, password: e.target.value })} value={user.password} />
-            </div>
-          </div>
-        </form> */}
 
-        {/* ------------------------------------------------------------------------------------------------- */}
           <div className="grid">
-
             <form action="https://httpbin.org/post" method="POST" className="form login">
-
               <div className="form__field">
                 <span className="hidden">Username</span>
                 <input id="login__username" type="text" name="username" className="form__input" 
@@ -78,12 +58,8 @@ function Login({ setUserData, setUser, user }) {
               <div className="form__field">
                 <input type="submit" value="Sign In" onClick={submitHandler} />
               </div>
-
             </form>
-
           </div>
-
-        {/* ------------------------------------------------------------------------------------------------- */}
 
       </div>
 

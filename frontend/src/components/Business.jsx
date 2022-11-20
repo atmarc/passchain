@@ -28,7 +28,7 @@ const Business = () =>  (
         Algorand is an autonomous, decentralized blockchain network. It offers a wide range of secure, efficient and scalable applications. It was built for the financial future and the world's first pure proof-of-stake (PoS) fundamental blockchain.
       </p>
 
-      <Button styles={`mt-10`} />
+      <Button styles={`mt-10`} text={"Get started Now"} />
     </div>
 
     <div className={`${layout.sectionImg} flex-col`}>
