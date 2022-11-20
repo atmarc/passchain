@@ -9,7 +9,9 @@ import Paper from '@mui/material/Paper';
 import { IconButton } from "@mui/material";
 import Button from "./Button";
 import { useRef } from 'react';
-
+import { AiFillDelete } from 'react-icons/ai';
+import { MdEdit } from 'react-icons/md';
+import styles, { layout } from "../style";
 
 export default function BasicTable({ userData, setUserData, user, refreshTable }) {
 
@@ -62,9 +64,16 @@ export default function BasicTable({ userData, setUserData, user, refreshTable }
         newPassword.current.value = ""
     }
 
+    var addInpStyle = {
+        marginRight: "1rem",
+        padding: "1.2rem",
+        borderRadius: "0.3rem"
+    }
+
     return (
         <div>
-            <TableContainer component={Paper}>
+            <h2 className={styles.heading3}>Current stored data: </h2>
+            <TableContainer component={Paper} sx={{marginLeft: "auto", marginRight: "auto"}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -82,19 +91,20 @@ export default function BasicTable({ userData, setUserData, user, refreshTable }
                                     {item["login"]}
                                 </TableCell>
                                 <TableCell align="left">{item["password"]}</TableCell>
-                                <TableCell align="left"><IconButton>Edit</IconButton></TableCell>
-                                <TableCell align="left"><IconButton>Delete</IconButton></TableCell>
+                                <TableCell align="left"><IconButton><MdEdit/></IconButton></TableCell>
+                                <TableCell align="left"><IconButton><AiFillDelete/></IconButton></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
+            
+            <div style={{marginTop: "2rem"}}>
+            <h2 className={styles.heading3}>Add new data: </h2>
+                <input type="username" ref={newUser} style={addInpStyle} />
+                <input type="password" ref={newPassword} style={addInpStyle} />
+            </div>
             <Button styles={`mt-10`} text={"Add data"} onClick={addPassHandler} />
-            <br />
-            <input type="username" ref={newUser} />
-            <br />
-            <br />
-            <input type="password" ref={newPassword} />
 
         </div>
     );
