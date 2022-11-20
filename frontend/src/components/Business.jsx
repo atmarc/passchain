@@ -25,7 +25,10 @@ const Business = () =>  (
         So, <br className="sm:block hidden" /> Benefits of Algorand Blockchain Technology?
       </h2>
       <p className={`${styles.paragraph} max-w-[570px] mt-5`}>
-        Algorand is an autonomous, decentralized blockchain network. It offers a wide range of secure, efficient and scalable applications. It was built for the financial future and the world's first pure proof-of-stake (PoS) fundamental blockchain.
+        Algorand removes the technical barriers that for years undermined mainstream blockchain adoption: decentralization, scale, and security. <br className="sm:block hidden" /> 
+
+        Our consensus mechanism is permissionless and PURE PROOF OF STAKE™. It ensures full participation, protection, and speed within a truly decentralized network.
+
       </p>
 
       <Button styles={`mt-10`} />

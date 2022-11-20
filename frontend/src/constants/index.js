@@ -19,24 +19,30 @@ export const features = [
   {
     id: "feature-1",
     icon: star,
-    title: "Blockchain Remembers",
+    title: "Increased Trust",
     content:
-      "",
+      "Since no passwords of yours will be stored on a central server of a big tech company anymore, you don't have to trust anyone with your life secrets",
   },
   {
     id: "feature-2",
     icon: shield,
-    title: "100% Secured",
+    title: "Unrivaled Security",
     content:
-      "No one knows the ",
+      "By now, we have proved again and again the security and the robust cryptography of Blockchain technology. Your passwords will be safe with us",
   },
   {
     id: "feature-3",
     icon: send,
     title: "Decentralization",
     content:
-      "A balance transfer credit card can save you a lot of money in interest charges.",
+      "Never have to worry about availablity, vulnebility, leakage of any central server anymore. You can always access your passwords when in need.",
   },
+  {
+    id: "feature-3",
+    icon: send,
+    title: "Super Sonic Speed",
+    content:
+      "With blocks finalized in seconds, Algorand is the first blockchain to provide immediate transaction finality. No forking.No uncertainty." },
 ];
 
 export const feedback = [
