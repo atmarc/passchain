@@ -24,7 +24,7 @@ const rows = [
     ('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function BasicTable() {
+export default function BasicTable({userData}) {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -35,13 +35,13 @@ export default function BasicTable() {
                     </TableRow> 
                 </TableHead>
                 <TableBody>
-                    {user_pw.map((item) => (
+                    {userData.map((item, index) => (
                         <TableRow
-                            key={item["email"]}
+                            key={index}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {item["email"]}
+                                {item["login"]}
                             </TableCell>
                             <TableCell align="left">{item["password"]}</TableCell>
                             <TableCell align="left"><IconButton>Edit</IconButton></TableCell>

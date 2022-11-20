@@ -9,10 +9,7 @@ function App() {
   }
 
   const [user, setUser] = useState({email: "", password: ""});
-
-  // const LoginFunction = details =>{
-  //   console.log(details);
-  // }
+  const [userData, setUserData] = useState([]);
   
   return (
     <div className="bg-primary w-full overflow-hidden">
@@ -32,8 +29,8 @@ function App() {
         <div className={`${styles.boxWidth}`}>
           <Stats />
           <Business />
-          <Login />
-          <CardDeal />
+          <Login setUserData={setUserData} />
+          <CardDeal userData={userData} />
           <Testimonials />
           <Clients />
           <CTA />

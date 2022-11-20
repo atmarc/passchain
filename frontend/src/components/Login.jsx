@@ -4,7 +4,7 @@ import Button from "./Button";
 
 import React, { useState } from "react";
 
-function Login () {
+function Login ({ setUserData }) {
 
   const [details, setDetails] = useState({email: "", password: ""});
 
@@ -29,7 +29,10 @@ function Login () {
 
     // console.log(details);
     
-    fetchData().then(res => res.json()).then(res => console.log(res))
+    fetchData().then(res => res.json()).then(res => {
+      setUserData(res["data"])
+      console.log(res["data"])
+    } )
     
     // fetch('http://localhost:5000/getData', {
     //   method: 'POST',

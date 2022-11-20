@@ -66,10 +66,10 @@ def getData():
 
     for elem in data:
         _id, user, password = elem.split(',')
-        return_data.append({"username": user, "password": password})
+        return_data.append({"_id": _id, "login": user, "password": password})
 
     print("Return values:", return_data)
-    res = jsonify({"data": data})
+    res = jsonify({"data": return_data})
     return res    
 
 if __name__ == "__main__":

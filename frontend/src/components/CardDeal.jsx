@@ -12,7 +12,7 @@ const listItems = user_pw.map((item) =>
   </li>
 )
 
-const CardDeal = () => (
+const CardDeal = ({ userData }) => (
   <section className={layout.section}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
@@ -25,7 +25,7 @@ const CardDeal = () => (
       </p>
       {/* <Button styles={`mt-10`} /> */}
 
-      <BasicTable />
+      <BasicTable userData={userData} />
 
     </div>
 
